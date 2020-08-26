@@ -1,0 +1,4 @@
+	SUBJECTS	CREDIT HOURS	GRADE
+0	bio		10		A
+1	math		2		B
+GPA = 3.5
