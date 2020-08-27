@@ -58,17 +58,19 @@ if __name__ == "__main__":
 
     for x in range(subjects):
         print("Subject #",x + 1 , ":")
-
-        subjectName = input("\tName: ")
-        creditHours = int(input("\tCredit Hours (Lab + Theory): "))
-        grade = input("\tGrade :")
-
+        try:
+            subjectName = input("\tName: ")
+            creditHours = int(input("\tCredit Hours (Lab + Theory): "))
+            grade = input("\tGrade :")
+        except:
+            print("Invalid Input!")
+            exit()
         subject = Subject(subjectName, creditHours, grade)
 
         outputFile.writelines("%i\t%s\t\t%i\t\t%s\n" %(x,subjectName,creditHours,grade))
 
     GPA = Subject.points_total/Subject.total_creditHours
-    outputFile.writelines("GPA = %s" %GPA)
+    outputFile.writelines("GPA = %.2f" %GPA)
     outputFile.close()
     
     with open("output.txt") as readFile:

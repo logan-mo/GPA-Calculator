@@ -1,3 +1,7 @@
 #	SUBJECTS	CREDIT HOURS	GRADE
-0	Bio		12		B
-GPA = 3.0
+0	OOP		5		B
+1	Maths		7		C
+2	Stat		4		C+
+3	Anime		8		A
+4	Linux		4		A
+GPA = 3.08
