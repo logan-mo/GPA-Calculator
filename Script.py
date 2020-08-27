@@ -1,8 +1,8 @@
-
-
 class Subject:
 
     GPA = 0
+    points_total = 0
+    total_creditHours = 0
 
     def __init__(self, name, creditHours, grade):
         self.name = name
@@ -13,7 +13,7 @@ class Subject:
     def calculation(self):
         self.qualityPoints = self.grade_to_Quality_points()
         self.points = self.total_points()
-        self.subjectGPA()
+        self.add_up()
 
     def grade_to_Quality_points(self):
         grade_points = {
@@ -40,17 +40,13 @@ class Subject:
         points = self.qualityPoints * self.creditHours
         return points
 
-    def subjectGPA(self):
-        Subject.GPA += (self.points/self.creditHours)
-        return Subject.GPA
-    
+    def add_up(self):
+        Subject.points_total += self.points
+        Subject.total_creditHours += self.creditHours
+
     def output(self):
         print("")
         pass
-
-def totalGPA(GPAs):
-        global subjects
-        return GPAs/subjects    
 
 if __name__ == "__main__":  
 
@@ -58,10 +54,10 @@ if __name__ == "__main__":
 
     subjects = int(input("How many subjects did you study?"))
 
-    outputFile.writelines("\tSUBJECTS\tCREDIT HOURS\tGRADE\n")
+    outputFile.writelines("#\tSUBJECTS\tCREDIT HOURS\tGRADE\n")
 
     for x in range(subjects):
-        print("Subject #",x , ":")
+        print("Subject #",x + 1 , ":")
 
         subjectName = input("\tName: ")
         creditHours = int(input("\tCredit Hours (Lab + Theory): "))
@@ -71,7 +67,7 @@ if __name__ == "__main__":
 
         outputFile.writelines("%i\t%s\t\t%i\t\t%s\n" %(x,subjectName,creditHours,grade))
 
-    GPA = totalGPA(Subject.GPA)
+    GPA = Subject.points_total/Subject.total_creditHours
     outputFile.writelines("GPA = %s" %GPA)
     outputFile.close()
     
