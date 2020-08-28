@@ -53,6 +53,7 @@ if __name__ == "__main__":
     outputFile = open("output.txt", "w")
 
     subjects = int(input("How many subjects did you study?"))
+    print("Please use shortened names for subjects to get the perfect output!")
 
     outputFile.writelines("#\tSUBJECTS\tCREDIT HOURS\tGRADE\n")
 
